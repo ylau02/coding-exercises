@@ -22,7 +22,7 @@ describe('Creating a move', () => {
         }
         expect(createMovie(movie)).toEqual('Error: Missing movie title');
         })
-        
+
     it('Should throw an error at an empty description', () => {
         const movie = {
             title: 'hello world',
@@ -49,6 +49,7 @@ describe('Creating a move', () => {
             movie,
             status: 'successfully added movie'
         }
+        expect(typeof createMovie(movie)).toBeTruthy();
         expect(createMovie(movie)).toEqual(expectedResult.toJSON);
     })
     
