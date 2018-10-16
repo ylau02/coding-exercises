@@ -1,0 +1,1 @@
+This is the readme.md for notes on Node-Girls Katas
