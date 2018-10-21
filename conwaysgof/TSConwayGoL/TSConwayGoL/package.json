@@ -1,0 +1,9 @@
+{
+  "name": "tsconway-go-l",
+  "version": "0.0.0",
+  "description": "TSConwayGoL",
+  "main": "app.js",
+  "author": {
+    "name": "oodru"
+  }
+}

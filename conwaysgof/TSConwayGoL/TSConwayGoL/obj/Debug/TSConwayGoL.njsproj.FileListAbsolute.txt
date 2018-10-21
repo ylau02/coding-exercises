@@ -1,0 +1,3 @@
+C:\Users\oodru\Dropbox\Projects\conwaysgof\TSConwayGoL\TSConwayGoL\obj\Debug\TSConwayGoL.njsprojResolveAssemblyReference.cache
+C:\Users\oodru\Dropbox\Projects\conwaysgof\TSConwayGoL\TSConwayGoL\obj\Debug\TSConwayGoL.njsproj.CoreCompileInputs.cache
+C:\Users\oodru\Dropbox\Projects\conwaysgof\TSConwayGoL\TSConwayGoL\bin\Microsoft.NodejsTools.WebRole.dll
