@@ -1,0 +1,56 @@
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  vertical-align:top;
+  font-family: 'Spirax', cursive;
+}
+
+.Table{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.Column{
+  flex: 1 1;
+}
+
+Button{
+  color: #ffffff;
+  font-size: 20px;
+  background: #ff6f00;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+Button:hover {
+  background: #fc3c3c;
+  text-decoration: none;
+}
+
+h2.Active{
+  color: red;
+}
+
+.Dice{
+   width: 200px; 
+   height: 100px; 
+   margin: 1em;
+   border: 1px solid grey;
+}
+
+.Score{
+  margin-bottom: 1em;
+}
+
+.Score div{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.DiceIcon{
+  display: inline-block;
+}

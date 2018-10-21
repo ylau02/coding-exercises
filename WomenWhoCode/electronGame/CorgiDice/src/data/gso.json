@@ -1,0 +1,12 @@
+{
+	"players": [
+		{ "active": true, "score": 0 },
+		{ "active": false, "score": 0 }
+	],
+	"board": {
+		"dealt":[],
+		"thrown": [],
+		"hand": []
+	},
+	"state": "TURNSTART"
+}
