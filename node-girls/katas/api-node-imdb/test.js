@@ -1,16 +1,4 @@
-function createMovie(movie){
-    if(!movie.title){
-        return "Error: Missing movie title"
-    } else if (!movie.description){
-        return "Error: Missing movie description"
-    }
-    return {
-        movie,
-        status: 'successfully added movie'
-    }.toJSON;
-}
-
-
+const createMovie = require("./create-movie")
 //Here be the tests
 describe('Creating a move', () => {
 
