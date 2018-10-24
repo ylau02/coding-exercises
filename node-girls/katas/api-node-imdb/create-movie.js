@@ -12,11 +12,13 @@ const createMovie = database => (movie) => {
    return "This movie already exists"
  }
 
-  return {
+  return JSON.stringify(database.saveData())
+  
+  /*{
     title: movie.title,
     description: movie.description,
     status: 'successfully added movie'
-  }.toJSON;
+  }.toJSON;*/
 
 }
 
