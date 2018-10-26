@@ -7,15 +7,12 @@ const database = {
 	getAll: async () => {
 		return await movieDatabase.find({}) 
 	},
-	findExactMovie: async (title) => {
-		return await movieDatabase.find({ title: title})
+	findMovies: async (title) => {
+		//not sure how to search by description
+		return await movieDatabase.find({ title: new RegExp(title, 'i') })
 	},
 	deleteMovie: async (id) => {
 		const result =	await movieDatabase.findByIdAndDelete(id)
-		return result
-	},
-	findMovies: async (searchText) => {
-		const result = await movieDatabase.find({title: new RegExp(searchText, 'i') })
 		return result
 	}
 };

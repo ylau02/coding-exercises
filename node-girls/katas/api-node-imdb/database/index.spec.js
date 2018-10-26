@@ -14,7 +14,7 @@ describe('Database', () => {
 	});
 	
 	it('Finds a specific movie by exact title', async () => {
-		const result = await database.findExactMovie('Despicable Me');
+		const result = await database.findMovies('Despicable Me');
 		expect(result[0].title).toBe('Despicable Me');
 	});
 
@@ -25,8 +25,10 @@ describe('Database', () => {
 	})
 
 	it('Deletes a movie with specific title', async () => {
-		const movie = await database.findExactMovie('Despicable Me')
+		const movie = await database.findMovies('Despicable Me')
 		const result = await database.deleteMovie(movie[0].id);
 		expect(JSON.stringify(result)).toEqual(JSON.stringify(movie[0]));
 	});
+
+	//write a test to search by description
 });
