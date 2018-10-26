@@ -38,45 +38,6 @@ describe('Creating a move', () => {
         expect(await createMovie(fakeDatabase)('movie1', 'a movies')).toEqual("A movie with this title already exists");
     })
     
-    /*User must send the data to the API in the following JSON format:
-     output: {
-        movie: {
-            id,
-            title,
-            description
-        },
-        status: 'successfully added movie'
-    }*/
-/*
-    it('Should send data to the API in a JSON format', async () => {
-        const fakeDatabase = {
-            getAll: () => {
-                return [{
-                    id: 1,
-                    title: "hello darkness forever 3",
-                    description: "my old friend"
-                }]
-            },
-            saveData: () => {
-                return {
-                    id: 2,
-                    title: "hello darkness forever",
-                    description: "my old friend",
-                    status: 'successfully added movie'
-                }
-            }
-        }
-
-        const expectedResult = {
-            id: 2,
-            title: "hello darkness forever",
-            description: "my old friend",
-            status: 'successfully added movie'
-        }
-
-        expect(await createMovie(fakeDatabase)('hello darkness forever', 'my old friend')).toBe(JSON.stringify(expectedResult))
-    })*/
-    
     /* It should call the getAll and saveData methods */
     it("Should called the getAll method once", async () => {
         const fakeDatabase = {

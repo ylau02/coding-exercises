@@ -10,7 +10,6 @@ var movieDatabaseSchema = new Schema({
                             title: String,
                             description: String
                           })
-
 var movieDatabase = mongoose.model('movies', movieDatabaseSchema);
 
 module.exports = movieDatabase;
