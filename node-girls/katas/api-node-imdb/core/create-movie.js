@@ -1,20 +1,22 @@
-const checkDuplicates = (movieList, title) => 
-  movieList.some(movie => movie.title === title)
-
-const createMovie = database => (movie) => {
-  if (!movie.title) {
+// const checkDuplicates = (movieList, title) => {
+//   movieList.some(movie => movie.title === title)}
+const createMovie = database => async (title, description) => {
+  if (!title) {
     return "Error: Missing movie title"
-  } else if (!movie.description) {
+  } else if (!description) {
       return "Error: Missing movie description"
-  } else if (!movie.title && !movie.description) {
+  } else if (!title && !description) {
     return "Error: Missing movie title and description"
   }
 
- if (checkDuplicates(database.getAll(), movie.title) === true) {
+  const allMovies = await database.getAll(); 
+ // console.log()
+
+ if (allMovies.some (movie => movie.title === title)) {
    return "A movie with this title already exists"
  }
 
-  return JSON.stringify(database.saveData())
+  return await database.saveData(title, description);
 
 }
 

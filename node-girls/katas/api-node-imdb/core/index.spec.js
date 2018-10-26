@@ -3,29 +3,17 @@ const createMovie = require("./create-movie")
 describe('Creating a move', () => {
 
     //The movie must have BOTH a title and description
-    it('Should throw an error at an empty title', () => {
-      //  const fakeDatabase = {
-      //      getAll: () => {}
-      //  }
-        const movie = {
-            title: '',
-            description: 'hello world'
-        }
-        // const createMockMovie = jest.spyOn(fakeDatabase, "getAll")
-        expect(createMovie()(movie)).toEqual('Error: Missing movie title');
-        })
-        // expect(createMockMovie).not.toHaveBeenCalled();
+    it('Should throw an error at an empty title', async () => {
 
-    it('Should throw an error at an empty description', () => {
-        const movie = {
-            title: 'hello world',
-            description: ''
-        }
-        expect(createMovie()(movie)).toEqual('Error: Missing movie description')
+        expect(await createMovie()('', 'hello world')).toEqual('Error: Missing movie title');
+    })
+
+    it('Should throw an error at an empty description', async () => {
+        expect(await createMovie()('movie', '')).toEqual('Error: Missing movie description')
     })
 
     //User cannot enter duplicate movies (same title)
-    it('Should check for duplicates and not accept movies of the same title', () => {
+    it('Should check for duplicates and not accept movies of the same title', async () => {
         const fakeDatabase = {
             getAll: () => {
                 return [
@@ -42,13 +30,12 @@ describe('Creating a move', () => {
                         description: "description1"
                     }
                 ]
+            },
+            saveData: () => {
+                
             }
         };
-        const movie = {
-            title: 'movie1',
-            description: 'description2'
-        };
-        expect(createMovie(fakeDatabase)(movie)).toEqual("A movie with this title already exists");
+        expect(await createMovie(fakeDatabase)('movie1', 'a movies')).toEqual("A movie with this title already exists");
     })
     
     /*User must send the data to the API in the following JSON format:
@@ -60,25 +47,21 @@ describe('Creating a move', () => {
         },
         status: 'successfully added movie'
     }*/
-
-    it('Should send data to the API in a JSON format', () => {
-        const movie = {
-            title: "hello darkness,",
-            description: "my old friend"
-        }
-
+/*
+    it('Should send data to the API in a JSON format', async () => {
         const fakeDatabase = {
             getAll: () => {
                 return [{
                     id: 1,
-                    title: "hello darkness forever",
+                    title: "hello darkness forever 3",
                     description: "my old friend"
                 }]
             },
             saveData: () => {
                 return {
                     id: 2,
-                    movie,
+                    title: "hello darkness forever",
+                    description: "my old friend",
                     status: 'successfully added movie'
                 }
             }
@@ -86,21 +69,16 @@ describe('Creating a move', () => {
 
         const expectedResult = {
             id: 2,
-            movie,
+            title: "hello darkness forever",
+            description: "my old friend",
             status: 'successfully added movie'
         }
-        //expect(typeof createMovie(movie)).toBeTruthy();
-        //expect(createMovie(fakeDatabase)(movie)).toEqual(expectedResult.toJSON);
-        expect(createMovie(fakeDatabase)(movie)).toBe(JSON.stringify(expectedResult))
-    })
+
+        expect(await createMovie(fakeDatabase)('hello darkness forever', 'my old friend')).toBe(JSON.stringify(expectedResult))
+    })*/
     
     /* It should call the getAll and saveData methods */
-    it("Should called the getAll method once", () => {
-        const movie = {
-            title: "hello darkness,",
-            description: "my old friend"
-        }
-
+    it("Should called the getAll method once", async () => {
         const fakeDatabase = {
             getAll: () => {
                 return [{
@@ -112,42 +90,39 @@ describe('Creating a move', () => {
             saveData: () => {
                 return {
                     id: 2,
-                    movie,
+                    title: "hello darkness,",
+                    description: "my old friend",
                     status: 'successfully added movie'
                 }
             }
         }
 
         const mockCreateMovie = jest.spyOn(fakeDatabase, "getAll")
-        const result = createMovie(fakeDatabase)(movie)
+        const result = await createMovie(fakeDatabase)('hello darkness forever', 'my old friend')
 
         expect(mockCreateMovie).toHaveBeenCalled()
     })
     
-    it("Should call the saveData method once", () => {
-        const movie = {
-            title: "hello darkness,",
-            description: "my old friend"
-        }
-
+    it("Should call the saveData method once", async () => {
         const fakeDatabase = {
             getAll: () => {
                 return [{
                     id: 1,
-                    title: "hello darkness forever",
+                    title: "hello darkness forever 2",
                     description: "my old friend"
                 }]
             },
             saveData: () => {
                 return {
                     id: 2,
-                    movie,
+                    title: "hello darkness forever",
+                    description: "my old friend",
                     status: 'successfully added movie'
                 }
             }
         }
         const mockCreateMovie = jest.spyOn(fakeDatabase, "saveData")
-        const result = createMovie(fakeDatabase)(movie)
+        const result = await createMovie(fakeDatabase)('hello darkness forever', 'my old friend')
 
         expect(mockCreateMovie).toHaveBeenCalled()
     })
