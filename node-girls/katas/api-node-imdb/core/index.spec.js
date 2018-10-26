@@ -48,7 +48,7 @@ describe('Creating a move', () => {
             title: 'movie1',
             description: 'description2'
         };
-        expect(createMovie(fakeDatabase)(movie)).toEqual("This movie already exists");
+        expect(createMovie(fakeDatabase)(movie)).toEqual("A movie with this title already exists");
     })
     
     /*User must send the data to the API in the following JSON format:

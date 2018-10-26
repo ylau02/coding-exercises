@@ -6,19 +6,15 @@ const createMovie = database => (movie) => {
     return "Error: Missing movie title"
   } else if (!movie.description) {
       return "Error: Missing movie description"
+  } else if (!movie.title && !movie.description) {
+    return "Error: Missing movie title and description"
   }
 
  if (checkDuplicates(database.getAll(), movie.title) === true) {
-   return "This movie already exists"
+   return "A movie with this title already exists"
  }
 
   return JSON.stringify(database.saveData())
-  
-  /*{
-    title: movie.title,
-    description: movie.description,
-    status: 'successfully added movie'
-  }.toJSON;*/
 
 }
 
